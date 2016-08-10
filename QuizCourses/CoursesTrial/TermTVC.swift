@@ -70,7 +70,7 @@ class TermTVC: CoreDataTVC {
             cell.textLabel?.text = termName
             cell.detailTextLabel?.text = definition
             
-            }
+        }
         return cell
     }
     
@@ -131,7 +131,6 @@ class TermTVC: CoreDataTVC {
         switch sourceViewController {
         case is AddTermVC:
             if let moc = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
-                
                 moc.performBlock{
                     do {
                         try moc.save()
@@ -155,8 +154,26 @@ class TermTVC: CoreDataTVC {
             
             switch identifier {
                 
-            case "showQuizGeneratorVC":
-                break
+            case "showDetailTermVC":
+                
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    let dc = segue.destinationViewController.contentViewController as! ViewDetailTermVC
+                    if let term = fetchedResultsController?.objectAtIndexPath(indexPath) as? Term {
+                        
+                        var name: String!
+                        var definition: String!
+                        
+                        moc.performBlockAndWait {
+                            definition = term.definition!
+                            name = term.name!
+                        }
+                        dc.definition = definition
+                        dc.name = name
+                        dc.question = term
+                        dc.moc = moc
+                    }
+                }
+                
                 
             case "showAddTermVC":
                 let dc = segue.destinationViewController.contentViewController as! AddTermVC

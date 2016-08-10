@@ -41,15 +41,12 @@ class CustomTextFieldView: UIView, UITextFieldDelegate {
         textField.backgroundColor = UIColor.lightGrayColor()
         currentPos = textField.tag
         submittedAnswers(textField.text!)
-        print(currentPos)
+       // print(currentPos)
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
         textField.backgroundColor = UIColor.orangeColor()
     }
-    
-    
-    let word = "Tell momma i love her and tell daddy i miss him!"
     
     
     // This is a delegate method from UITextFieldDelegate
@@ -91,7 +88,7 @@ class CustomTextFieldView: UIView, UITextFieldDelegate {
                 box[activePos].becomeFirstResponder()
             }
         } else {
-            print("final position reached")
+            //print("final position reached")
         }
     }
     
@@ -167,9 +164,5 @@ class CustomTextFieldView: UIView, UITextFieldDelegate {
             submittedAnswer.append("\(chars)")
         }
     }
-    
-    
-    
-    
     
 }

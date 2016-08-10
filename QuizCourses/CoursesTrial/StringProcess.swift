@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
-class Process {
+class StringProcess: UIViewController, UITextFieldDelegate {
     
     //questions[i-1].score = checkAnswers(submittedAnswers, questions: questions, index: i-1)
     
@@ -28,5 +29,20 @@ class Process {
         return characterDict
     }
     
+    func joinTextFieldToChars (box: [UITextField]) -> [String]{
+        var characterDict = [String]()
+        for textField in box {
+            characterDict.append(textField.text!)
+        }
+        return characterDict
+    }
+    
+    func joinCharsToString (charText: [String]) -> String{
+        var characterDict = ""
+        for charString in charText {
+            characterDict = characterDict.stringByAppendingString(charString)
+        }
+        return characterDict
+    }
     
 }

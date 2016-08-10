@@ -8,32 +8,38 @@
 
 
 
-import Foundation
 import UIKit
 import CoreData
 
-class AddTermVC: UIViewController, UITextViewDelegate {
+class EditTermVC: UIViewController, UITextViewDelegate {
     
-    var selectedCourse: Course!
+    var moc: NSManagedObjectContext!
+    var question: Term!
+    var name: String!
+    var definition: String!
     
-    @IBOutlet weak var termLabel: UITextField!
-    @IBOutlet weak var definitionView: UITextView!
+    @IBOutlet weak var termLabel: UITextField! {
+        didSet{
+            termLabel.text = name
+        }
+    }
+    
+    @IBOutlet weak var definitionView: UITextView! {
+        didSet{
+            definitionView.text = definition
+        }
+    }
     
     
     @IBAction func saveButton(sender: UIBarButtonItem) {
-        let termName = termLabel.text
-        let definition = definitionView.text
         
-        if termName != "" && definition != "" {
+        if name != "" && definition != "" {
             
-            if let moc = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
+            if let moc = moc {
                 
-                if let term = NSEntityDescription.insertNewObjectForEntityForName("Term", inManagedObjectContext: moc) as? Term {
-                    
-                    term.course = selectedCourse
-                    term.name = termName
-                    term.definition = definition
-                    
+                    question.name = termLabel.text
+                    question.definition = definitionView.text
+                
                     moc.performBlock{
                         do {
                             try moc.save()
@@ -41,8 +47,7 @@ class AddTermVC: UIViewController, UITextViewDelegate {
                             print("Error: \(error)")
                         }
                     }
-                    
-                }}
+                }
             
             performSegueWithIdentifier("unwindToCourseTVC", sender: self)
             
@@ -69,7 +74,13 @@ class AddTermVC: UIViewController, UITextViewDelegate {
     
     private func updateUI() {
         definitionView.delegate = self
-        definitionView.text = "Write a definition for your term"
+        if definitionView.text == "" {
+            definitionView.text = "Write a definition for your term"
+            
+        } else {
+            definitionView.text = definition
+        }
+        
         definitionView.textColor = UIColor.lightGrayColor()
     }
     

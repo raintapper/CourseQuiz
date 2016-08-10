@@ -9,25 +9,31 @@
 import UIKit
 import CoreData
 
-class QuizVC: UIViewController {
+class QuizVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     var moc: NSManagedObjectContext!
     var questions:[Term] = []
     var numberOfQuestions: Int = 0
-    //var submittedAnswers: [String] = []
-    var stringProcess = Process()
+    var submittedAnswer: [String] = []
+    var responses: [[String]] = []
+    var stringProcess = StringProcess()
     var textFieldView = CustomTextFieldView()
     @IBOutlet weak var boxText: CustomTextFieldView!
     
     @IBOutlet weak var defineView: UITextView!
     
-    var i = 1
     
+    var i = 1
     @IBAction func submitButton(sender: UIButton) {
         
-        //submittedAnswers.append(nameInput.text!)
-        // this is how you pass index WOW I AM SO COOL!
-        questions[i-1].score = updateScore(textFieldView.submittedAnswer, questions: questions, index: i-1)
+        // submittedAnswers.append(nameInput.text!)
+        // this is how you pass index WOW I AM SO Cool!
+        
+        submittedAnswer = stringProcess.joinTextFieldToChars(textFieldView.box)
+        responses.append(submittedAnswer)
+        
+        questions[i-1].score = updateScore(submittedAnswer, questions: questions, index: i-1)
         
         if i < numberOfQuestions {
             defineView.text = questions[i].definition
@@ -35,20 +41,20 @@ class QuizVC: UIViewController {
             updateUI(textFieldView.box)
             textFieldView.generatingBox(questions[i].name!)
             updateUI(textFieldView.box)
-            
             defineView.reloadInputViews()
+            
             
         } else {
             //reset counter
             i = 1
-            //performSegueWithIdentifier("showSummary", sender: UIButton())
+            performSegueWithIdentifier("showSummary", sender: UIButton())
             
         }
         // need to have variable i to set the question name and definition
         i += 1
     }
     
-    
+    //I should move this update function to summary page where the score is computed and displayed
     func updateScore(submittedAnswer:[String], questions:[Term], index: Int) -> (Int){
         let i = index
         let score = questions[i].score!.integerValue
@@ -56,12 +62,16 @@ class QuizVC: UIViewController {
         //let answeredChars = textFieldView.answer
         
         //if submittedAnswers[i].caseInsensitiveCompare(questions[i].name!) == NSComparisonResult.OrderedSame
-        //
+        
+        print(questionChars)
+        print(submittedAnswer)
+        print("The score before saving is: \(questions[i].score)")
         
         if stringProcess.compareAndReturnBool(questionChars, answered: submittedAnswer) {
             //record if the terms were answered incorrectly
+            
             questions[i].score = (integer: score + 1)
-            print(questions[i].score)
+            print("The score after saving correct is: \(questions[i].score)")
             do {
                 try moc.save()
             } catch let error as NSError {
@@ -74,7 +84,7 @@ class QuizVC: UIViewController {
             } catch let error as NSError {
                 print("errors: \(error)")
             }
-            print(questions[i].score)
+            print("The score after saving wrong is: \(questions[i].score)")
             
         }
         return (Int(questions[i].score!))
@@ -97,8 +107,16 @@ class QuizVC: UIViewController {
             }
             textFieldView.didSelectBox()
         }
-        boxText.reloadInputViews()
+        boxText.setNeedsDisplay()
     }
+    
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
     
     
     override func viewDidLoad() {
@@ -107,20 +125,69 @@ class QuizVC: UIViewController {
         updateUI(textFieldView.box)
         textFieldView.didSelectBox()
         defineView.text = questions[0].definition
+        
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(QuizVC.keyboardWasShown(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(QuizVC.keyboardWillBeHidden(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        
+    }
+    
+    func keyboardWasShown(aNotification:NSNotification){
+        
+        print("Keyboard was shown")
+        
+        guard let info = aNotification.userInfo else {
+            print("Error: No info of notification")
+            return
+        }
+        
+        //to get the keyboard size
+        guard let kbSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue().size else {
+            
+            print("Error: No size for keyboard")
+            return
+        }
+        
+        print("Size = \(kbSize)")
+        
+        let contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0)
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+    }
+    
+    
+    func keyboardWillBeHidden(aNotification:NSNotification){
+        //print("keyboard will be hidden")
+        
+        let contentInsets = UIEdgeInsetsZero
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+        
+    }
+    
+    @IBAction func userTappedBackground(sender: AnyObject) {
+        self.view.endEditing(true)
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    /*
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     if segue.identifier == "showSummary" {
-     // let vc = segue.destinationViewController as! ResultsViewController
-     
-     }
-     }*/
     
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showSummary" {
+            let vc = segue.destinationViewController.contentViewController as! QuizSummaryVC
+            vc.questions = questions
+            vc.submittedAnswers = responses
+            vc.moc = moc
+        }
+    }
 }
+
+
