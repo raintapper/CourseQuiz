@@ -19,6 +19,28 @@ class ViewDetailTermVC: UIViewController {
     
     @IBOutlet weak var navigationBar: UINavigationItem!
     
+    
+    @IBAction func backButton(sender: UIBarButtonItem) {
+        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+        /*
+    @IBAction func back(sender:UIStoryboardSegue) {
+        print("Bloom")
+        let sourceVC = sender.sourceViewController
+        
+        switch sourceVC {
+        case is TermTVC:
+            performSegueWithIdentifier("unwindToCourseTVC", sender: self)
+        case is QuizSummaryVC:
+            performSegueWithIdentifier("unwindToQuizSummaryVC", sender: self)
+        default:
+            break
+        }
+        
+    }
+ */
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.title = "Term: \(name)"

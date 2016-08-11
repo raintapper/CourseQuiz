@@ -21,7 +21,7 @@
 		4CD4087F1D58D4630084DA61 /* QuizSummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD4087E1D58D4630084DA61 /* QuizSummaryVC.swift */; };
 		4CDAA3061D599A960001B23E /* QuizSummaryTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAA3051D599A960001B23E /* QuizSummaryTVCell.swift */; };
 		4CDAA3081D5AC0520001B23E /* TickCrossIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAA3071D5AC0520001B23E /* TickCrossIndicator.swift */; };
-		4CDAA30A1D5AD2A60001B23E /* ViewDetaimTermVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAA3091D5AD2A60001B23E /* ViewDetaimTermVC.swift */; };
+		4CDAA30A1D5AD2A60001B23E /* ViewDetailTermVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAA3091D5AD2A60001B23E /* ViewDetailTermVC.swift */; };
 		4CDAA30C1D5B24810001B23E /* EditTermVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAA30B1D5B24810001B23E /* EditTermVC.swift */; };
 		4CE25ED61D48B85300E4CD85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE25ED51D48B85300E4CD85 /* AppDelegate.swift */; };
 		4CE25EDB1D48B85300E4CD85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CE25ED91D48B85300E4CD85 /* Main.storyboard */; };
@@ -47,7 +47,7 @@
 		4CD4087E1D58D4630084DA61 /* QuizSummaryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizSummaryVC.swift; sourceTree = "<group>"; };
 		4CDAA3051D599A960001B23E /* QuizSummaryTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizSummaryTVCell.swift; sourceTree = "<group>"; };
 		4CDAA3071D5AC0520001B23E /* TickCrossIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TickCrossIndicator.swift; sourceTree = "<group>"; };
-		4CDAA3091D5AD2A60001B23E /* ViewDetaimTermVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDetaimTermVC.swift; sourceTree = "<group>"; };
+		4CDAA3091D5AD2A60001B23E /* ViewDetailTermVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewDetailTermVC.swift; sourceTree = "<group>"; };
 		4CDAA30B1D5B24810001B23E /* EditTermVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTermVC.swift; sourceTree = "<group>"; };
 		4CE25ED21D48B85300E4CD85 /* CoursesTrial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoursesTrial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CE25ED51D48B85300E4CD85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 				4CE25ED51D48B85300E4CD85 /* AppDelegate.swift */,
 				4CE25EEA1D48B88100E4CD85 /* CourseTVC.swift */,
 				4C97E1521D49FE7300CFFAFB /* TermTVC.swift */,
-				4CDAA3091D5AD2A60001B23E /* ViewDetaimTermVC.swift */,
+				4CDAA3091D5AD2A60001B23E /* ViewDetailTermVC.swift */,
 				4C705DEF1D4B5D67007EA63C /* Quiz */,
 				4CE25ED91D48B85300E4CD85 /* Main.storyboard */,
 				4CD4087B1D5857630084DA61 /* Helpers */,
@@ -221,7 +221,7 @@
 				4C6AD84E1D4B0B5F009475F4 /* QuizVC.swift in Sources */,
 				4CF1027D1D58059300E99A25 /* CustomTextFieldView.swift in Sources */,
 				4C8E12F81D52E6420043D97C /* Term.swift in Sources */,
-				4CDAA30A1D5AD2A60001B23E /* ViewDetaimTermVC.swift in Sources */,
+				4CDAA30A1D5AD2A60001B23E /* ViewDetailTermVC.swift in Sources */,
 				4C8E12F71D52E6420043D97C /* Term+CoreDataProperties.swift in Sources */,
 				4C6AD84C1D4AFC07009475F4 /* AddTermVC.swift in Sources */,
 				4C97E1531D49FE7300CFFAFB /* TermTVC.swift in Sources */,

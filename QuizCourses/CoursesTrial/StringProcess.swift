@@ -37,7 +37,7 @@ class StringProcess: UIViewController, UITextFieldDelegate {
         return characterDict
     }
     
-    func joinCharsToString (charText: [String]) -> String{
+    func joinCharsToString (charText: [String]) -> String! {
         var characterDict = ""
         for charString in charText {
             characterDict = characterDict.stringByAppendingString(charString)

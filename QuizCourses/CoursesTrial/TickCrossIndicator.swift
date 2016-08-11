@@ -10,7 +10,7 @@ import UIKit
 
 @IBDesignable class TickCrossIndicator: UIView {
     
-    @IBInspectable var fillColor: UIColor = UIColor.greenColor()
+    @IBInspectable var fillColor: UIColor = UIColor.clearColor()
     @IBInspectable var isCorrect: Bool = true
     
     

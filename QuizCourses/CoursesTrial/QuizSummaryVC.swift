@@ -62,15 +62,20 @@ class QuizSummaryVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             cell.tickIndicator.isCorrect = true } else {
             cell.tickIndicator.isCorrect = false}
         
-            cell.correctAnswerLabel.text = questions[indexPath.row].name
-            cell.yourAnswerLabel.text = stringProcess.joinCharsToString(submittedAnswers[indexPath.row])
-            cell.scoreLabel.text = String(questions[indexPath.row].score)
+            cell.correctAnswerLabel.text = "This is the correct answer: \(questions[indexPath.row].name)"
+            cell.yourAnswerLabel.text = "Your submitted answer: \(stringProcess.joinCharsToString(submittedAnswers[indexPath.row]))"
+            cell.scoreLabel.text = String(questions[indexPath.row].score!)
  
         return cell
     }
     
 
     //MARK: - NAVIGATION
+    
+    @IBAction func unwindToQuizSummaryVC(segue:UIStoryboardSegue) {
+    }
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if let identifier = segue.identifier {
@@ -85,6 +90,7 @@ class QuizSummaryVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
                         dc.name = questions[indexPath.row].name
                         dc.definition = questions[indexPath.row].definition
                         dc.moc = moc
+                
                 }
                 
             default:
