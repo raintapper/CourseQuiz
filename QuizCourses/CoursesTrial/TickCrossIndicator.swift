@@ -10,17 +10,12 @@ import UIKit
 
 @IBDesignable class TickCrossIndicator: UIView {
     
-    @IBInspectable var fillColor: UIColor = UIColor.clearColor()
     @IBInspectable var isCorrect: Bool = true
     
     
     override func drawRect(rect: CGRect) {
         
-        
-        let path = UIBezierPath(rect: rect)
-        fillColor.setFill()
-        path.fill()
-        
+
         let lineWidth: CGFloat = 4.0
         
         

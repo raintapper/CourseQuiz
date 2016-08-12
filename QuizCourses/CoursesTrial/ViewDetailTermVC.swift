@@ -24,36 +24,19 @@ class ViewDetailTermVC: UIViewController {
         self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
-        /*
-    @IBAction func back(sender:UIStoryboardSegue) {
-        print("Bloom")
-        let sourceVC = sender.sourceViewController
-        
-        switch sourceVC {
-        case is TermTVC:
-            performSegueWithIdentifier("unwindToCourseTVC", sender: self)
-        case is QuizSummaryVC:
-            performSegueWithIdentifier("unwindToQuizSummaryVC", sender: self)
-        default:
-            break
-        }
-        
-    }
- */
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationBar.title = "Term: \(name)"
+        navigationBar.title = "\(name)"
     }
     
     @IBOutlet weak var nameLabel: UITextField! {
         didSet {
-            nameLabel.text = name
+            nameLabel.text = question.name
         }
     }
     @IBOutlet weak var definitionLabel: UITextView! {
         didSet {
-            definitionLabel.text = definition
+            definitionLabel.text = question.definition
         }
     }
     
@@ -62,7 +45,7 @@ class ViewDetailTermVC: UIViewController {
     }
 
     
-    /*
+    
     @IBAction func unwindToDetailTermVC(segue:UIStoryboardSegue) {
     }
     
@@ -72,7 +55,6 @@ class ViewDetailTermVC: UIViewController {
         switch sourceViewController {
         case is EditTermVC:
             if let moc = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
-                print("is it saved? is it called?")
                 moc.performBlock{
                     do {
                         try moc.save()
@@ -87,7 +69,6 @@ class ViewDetailTermVC: UIViewController {
         }
         
     }
-     */
 
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

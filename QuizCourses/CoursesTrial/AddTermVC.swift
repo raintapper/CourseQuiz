@@ -16,12 +16,13 @@ class AddTermVC: UIViewController, UITextViewDelegate {
     
     var selectedCourse: Course!
     
-    @IBOutlet weak var termLabel: UITextField!
+    
+    @IBOutlet weak var termNameLabel: UITextField!
     @IBOutlet weak var definitionView: UITextView!
     
     
     @IBAction func saveButton(sender: UIBarButtonItem) {
-        let termName = termLabel.text
+        let termName = termNameLabel.text
         let definition = definitionView.text
         
         if termName != "" && definition != "" {

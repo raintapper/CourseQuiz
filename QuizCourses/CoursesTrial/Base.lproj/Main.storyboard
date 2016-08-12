@@ -181,7 +181,7 @@
                             <barButtonItem systemItem="add" id="JaK-7N-wKG">
                                 <connections>
                                     <action selector="addTermButton:" destination="ArP-c7-Buu" id="Mcq-6q-8Wf"/>
-                                    <segue destination="uFV-jC-KaV" kind="show" id="Jfu-vy-P9I"/>
+                                    <segue destination="gGT-bC-qRW" kind="show" identifier="showAddTermVC" id="cki-Cv-mB6"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Test" id="Efe-0V-vGZ">
@@ -201,65 +201,6 @@
                 <exit id="omU-Eh-AYi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2593" y="1013"/>
-        </scene>
-        <!--Add TermVC-->
-        <scene sceneID="M9p-tB-AB0">
-            <objects>
-                <viewController id="fYK-Gr-l0a" customClass="AddTermVC" customModule="CoursesTrial" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="VaL-6A-RU5"/>
-                        <viewControllerLayoutGuide type="bottom" id="l8F-tB-pnr"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ty0-vV-clm">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="syg-lX-SvX">
-                                <rect key="frame" x="30" y="173" width="540" height="254"/>
-                                <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Term" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ir5-sy-uTb">
-                                        <rect key="frame" x="0.0" y="0.0" width="540" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bpr-eH-WMK">
-                                        <rect key="frame" x="0.0" y="50" width="540" height="204"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="syg-lX-SvX" firstAttribute="centerX" secondItem="ty0-vV-clm" secondAttribute="centerX" id="Dy7-A3-kGK"/>
-                            <constraint firstItem="syg-lX-SvX" firstAttribute="leading" secondItem="ty0-vV-clm" secondAttribute="leadingMargin" constant="10" id="GP7-9T-TK7"/>
-                            <constraint firstItem="syg-lX-SvX" firstAttribute="top" secondItem="VaL-6A-RU5" secondAttribute="bottom" constant="109" id="Ly5-wR-1sU"/>
-                            <constraint firstItem="syg-lX-SvX" firstAttribute="centerY" secondItem="ty0-vV-clm" secondAttribute="centerY" id="RoS-VP-IY0"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="QKm-0m-tDd">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="NLB-9V-fhW">
-                            <connections>
-                                <segue destination="REQ-Pd-mWc" kind="unwind" identifier="unwindToCourseTVC" unwindAction="close:" id="sba-54-P0S"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="h6l-zE-zYk">
-                            <connections>
-                                <action selector="saveButton:" destination="fYK-Gr-l0a" id="EAH-BS-Uh3"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="definitionView" destination="bpr-eH-WMK" id="hm4-FV-iZG"/>
-                        <outlet property="termLabel" destination="Ir5-sy-uTb" id="uc2-fl-mMZ"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aSq-s2-Go6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="REQ-Pd-mWc" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="4129" y="453"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7lH-du-1W3">
@@ -331,16 +272,13 @@
                                                         </stackView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQu-lh-19F" customClass="TickCrossIndicator" customModule="CoursesTrial" customModuleProvider="target">
                                                             <rect key="frame" x="478" y="0.0" width="63" height="63"/>
-                                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="MQu-lh-19F" secondAttribute="height" multiplier="1:1" id="1jM-5f-u8b"/>
                                                                 <constraint firstAttribute="width" constant="63" id="mjM-fg-8nR"/>
                                                             </constraints>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isCorrect" value="YES"/>
-                                                                <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
-                                                                    <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
                                                     </subviews>
@@ -494,24 +432,6 @@
             </objects>
             <point key="canvasLocation" x="4204" y="-232"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="E6u-Eb-fMl">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uFV-jC-KaV" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="N1L-dX-x1H">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="fYK-Gr-l0a" kind="relationship" relationship="rootViewController" id="OlY-0F-OMq"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sH1-Lb-kJU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3394" y="453"/>
-        </scene>
         <!--View Detail TermVC-->
         <scene sceneID="fge-97-Ol6">
             <objects>
@@ -570,7 +490,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="haR-Zk-il5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3446" y="1471"/>
+            <point key="canvasLocation" x="5046" y="2019"/>
         </scene>
         <!--Edit TermVC-->
         <scene sceneID="9Qs-sm-hQe">
@@ -610,9 +530,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Czo-zS-aNQ">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="j4g-cv-AYA">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="j4g-cv-AYA">
                             <connections>
-                                <segue destination="tpX-ey-PB8" kind="unwind" identifier="unwindToCourseTVC" unwindAction="close:" id="iWT-e2-SJE"/>
+                                <segue destination="B9E-I8-pW5" kind="unwind" identifier="unwindToCourseTVC" unwindAction="closed:" id="wRC-YO-nfH"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="gC7-3g-viR">
@@ -627,9 +547,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CIa-jh-57b" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="tpX-ey-PB8" userLabel="Exit" sceneMemberID="exit"/>
+                <exit id="B9E-I8-pW5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4941" y="2212"/>
+            <point key="canvasLocation" x="4751" y="2798"/>
         </scene>
         <!--Quiz GeneratorVC-->
         <scene sceneID="hDf-8F-uik">
@@ -731,6 +651,65 @@
             </objects>
             <point key="canvasLocation" x="3509" y="-232"/>
         </scene>
+        <!--Add TermVC-->
+        <scene sceneID="Xiw-yy-mi2">
+            <objects>
+                <viewController id="mUo-8n-LXs" customClass="AddTermVC" customModule="CoursesTrial" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="afa-df-zXj"/>
+                        <viewControllerLayoutGuide type="bottom" id="6Ck-p5-9vb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pvz-GG-kNV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="dN1-0f-ibi">
+                                <rect key="frame" x="30" y="137" width="540" height="254"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Term" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8HY-nS-nkY">
+                                        <rect key="frame" x="0.0" y="0.0" width="540" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Icf-AW-o7S">
+                                        <rect key="frame" x="0.0" y="50" width="540" height="204"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6Ck-p5-9vb" firstAttribute="top" secondItem="dN1-0f-ibi" secondAttribute="bottom" constant="165" id="N9I-kQ-xNI"/>
+                            <constraint firstItem="dN1-0f-ibi" firstAttribute="top" secondItem="afa-df-zXj" secondAttribute="bottom" constant="73" id="R7A-rd-yw6"/>
+                            <constraint firstItem="dN1-0f-ibi" firstAttribute="leading" secondItem="pvz-GG-kNV" secondAttribute="leadingMargin" constant="10" id="UMR-WM-lZM"/>
+                            <constraint firstItem="dN1-0f-ibi" firstAttribute="centerX" secondItem="pvz-GG-kNV" secondAttribute="centerX" id="laf-dw-lvB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hK3-ec-rYK">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="OnC-0t-c85">
+                            <connections>
+                                <segue destination="zJg-Fg-kPe" kind="unwind" identifier="unwindToCourseTVC" unwindAction="closed:" id="gjm-1d-e15"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="2Dw-fq-DSL">
+                            <connections>
+                                <action selector="saveButton:" destination="mUo-8n-LXs" id="xkt-9m-iNb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="definitionView" destination="Icf-AW-o7S" id="QEp-GX-OiY"/>
+                        <outlet property="termNameLabel" destination="8HY-nS-nkY" id="ARt-LI-iS5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wI1-WW-gVP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="zJg-Fg-kPe" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="4138" y="644"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="7Og-9B-aro">
             <objects>
@@ -819,7 +798,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ga9-ta-2hm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5008" y="843"/>
+            <point key="canvasLocation" x="6678" y="1059"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Fac-1b-wnk">
@@ -837,10 +816,28 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6de-e8-ZjP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4129" y="2212"/>
+            <point key="canvasLocation" x="3824" y="2798"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="WgM-7G-yVZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gGT-bC-qRW" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Zf-kS-NtV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="mUo-8n-LXs" kind="relationship" relationship="rootViewController" id="JlC-vW-oF4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DP3-pO-dv8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3326" y="644"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="b1t-l2-chl"/>
+        <segue reference="4mc-IJ-eC5"/>
     </inferredMetricsTieBreakers>
 </document>

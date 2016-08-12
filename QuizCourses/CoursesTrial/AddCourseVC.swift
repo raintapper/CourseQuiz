@@ -45,6 +45,7 @@ class AddCourseVC: UIViewController, UITextViewDelegate {
                 }}
             
             performSegueWithIdentifier("unwindToGlobalTVC", sender: self)
+            
         } else {
             
             let alert = UIAlertController(title: "Error", message: "Please fill up all fields", preferredStyle: .Alert)

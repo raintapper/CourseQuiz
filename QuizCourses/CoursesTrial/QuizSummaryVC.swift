@@ -28,7 +28,6 @@ class QuizSummaryVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     // MARK: - Compare and tabulate results
     func percentageCorrect() -> String {
         
-        var percent = 0.0
         var i = 0
         var answeredCorrectly = 0.0
         
@@ -40,11 +39,8 @@ class QuizSummaryVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 i += 1
             }
         }
- 
         
-        percent = answeredCorrectly / Double(questions.count) * 100
-        
-        return "The result is \(percent)%"
+        return "You got \(Int(answeredCorrectly)) out of \(questions.count) correct!"
     }
     
     
@@ -62,8 +58,8 @@ class QuizSummaryVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
             cell.tickIndicator.isCorrect = true } else {
             cell.tickIndicator.isCorrect = false}
         
-            cell.correctAnswerLabel.text = "This is the correct answer: \(questions[indexPath.row].name)"
-            cell.yourAnswerLabel.text = "Your submitted answer: \(stringProcess.joinCharsToString(submittedAnswers[indexPath.row]))"
+            cell.correctAnswerLabel.text = "Answer: \(questions[indexPath.row].name)"
+            cell.yourAnswerLabel.text = "Submitted: \(stringProcess.joinCharsToString(submittedAnswers[indexPath.row]))"
             cell.scoreLabel.text = String(questions[indexPath.row].score!)
  
         return cell

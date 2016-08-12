@@ -118,16 +118,12 @@ class TermTVC: CoreDataTVC {
         return [shareAction, editAction, deleteAction]
     }
     
-    
     @IBAction func unwindToCourseTVC(segue:UIStoryboardSegue) {
     }
     
     
-    
-    
-    @IBAction func close(segue:UIStoryboardSegue) {
+    @IBAction func closed(segue:UIStoryboardSegue) {
         let sourceViewController = segue.sourceViewController
-        
         switch sourceViewController {
         case is AddTermVC:
             if let moc = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
@@ -146,6 +142,7 @@ class TermTVC: CoreDataTVC {
         
     }
     
+
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

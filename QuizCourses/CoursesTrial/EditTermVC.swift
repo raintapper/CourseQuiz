@@ -36,7 +36,6 @@ class EditTermVC: UIViewController, UITextViewDelegate {
         if name != "" && definition != "" {
             
             if let moc = moc {
-                
                     question.name = termLabel.text
                     question.definition = definitionView.text
                 
@@ -65,6 +64,10 @@ class EditTermVC: UIViewController, UITextViewDelegate {
         
     }
     
+    @IBAction func backButton(sender: UIBarButtonItem) {
+        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+
+    }
     
     override func viewDidLoad() {
         // Load the textField
